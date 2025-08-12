@@ -21,7 +21,7 @@ import {
 import { Input } from "./components/ui/input";
 import { Textarea } from "./components/ui/textarea";
 // Placeholder images - replace with actual images later
-const logo = "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=100&fit=crop&q=80";
+const logo = "/logo.png";
 const backgroundImage = "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=800&fit=crop&q=80";
 const biryaniImage = "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&h=400&fit=crop&q=80";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
@@ -336,7 +336,7 @@ export default function App() {
 
   // Header Component
   const Header = () => (
-    <header className="relative z-50 bg-black/70 backdrop-blur-sm border-b border-green-500/20">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-sm border-b border-green-500/20">
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -552,9 +552,26 @@ export default function App() {
 
                 <div className="py-8">
                   <div className="w-24 h-1 bg-green-400 mx-auto mb-8"></div>
-                  <div className="flex items-center justify-center gap-3 text-white text-xl">
+                  <div className="flex items-center justify-center gap-3 text-white text-xl mb-8">
                     <MapPin className="w-6 h-6 text-green-400" />
                     <span>969-971 Canterbury Road Lakemba 2195</span>
+                  </div>
+                  
+                  {/* Google Maps Widget */}
+                  <div className="w-full max-w-4xl mx-auto">
+                    <div className="bg-white rounded-lg overflow-hidden shadow-2xl">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.5!2d151.075!3d-33.925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12bb3d3b3b3b3b%3A0x3b3b3b3b3b3b3b3b!2s969-971+Canterbury+Road+Lakemba+NSW+2195!5e0!3m2!1sen!2sau!4v1234567890"
+                        width="100%"
+                        height="400"
+                        style={{ border: 0 }}
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title="Shahi Dera Restaurant Location"
+                        className="w-full h-96"
+                      ></iframe>
+                    </div>
                   </div>
                 </div>
 
@@ -1136,7 +1153,9 @@ export default function App() {
       </div>
 
       <Header />
-      {renderCurrentPage()}
+      <div className="pt-24">
+        {renderCurrentPage()}
+      </div>
       <Footer />
     </div>
   );
